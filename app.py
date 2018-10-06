@@ -1,12 +1,11 @@
-from flask import Flask
+#!/usr/bin/env python
+# coding=utf-8
 
-app = Flask(__name__)
+from api import create_app
 
+# 选择不同的模式启动
+# mode=["default","development","testing","production"]
+app = create_app("default")
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
