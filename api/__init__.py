@@ -17,7 +17,7 @@ import json
 
 def create_app(config_name):
     app = Flask(__name__)
-    app.debug = config[config_name].DEBUG
+    # app.debug = config[config_name].DEBUG
     app_name = config[config_name].APP_NAME
     app_resources_folder = config[config_name].APP_RESOURCES_FOLDER
     api = Api(app)
@@ -30,10 +30,10 @@ def create_app(config_name):
             continue
         else:
             resource = resource[:-3]
-        model_string = "{}.{}.{}".format(app_name, app_resources_folder, resource)
-        print model_string
-        # model_name = __import__(model_string, globals(), locals(), "Api")
-        model_name = __import__(model_string, fromlist=[resource])
+        model_str = "{}.{}.{}".format(app_name, app_resources_folder, resource)
+        print model_str
+        # model_name = __import__(model_str, globals(), locals(), "Api")
+        model_name = __import__(model_str, fromlist=[resource])
         url_name = "/{app_name}/v1/resources/{resource}".format(app_name=app_name, resource=resource)
         class_name = resource.capitalize()
         print model_name, url_name, class_name
