@@ -17,7 +17,7 @@ import json
 
 def create_app(config_name):
     app = Flask(__name__)
-    # app.debug = config[config_name].DEBUG
+    app.debug = config[config_name].DEBUG
     app_name = config[config_name].APP_NAME
     app_resources_folder = config[config_name].APP_RESOURCES_FOLDER
     api = Api(app)
